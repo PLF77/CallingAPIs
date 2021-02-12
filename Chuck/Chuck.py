@@ -1,4 +1,4 @@
-import json 
+import json
 import requests
 
 
@@ -40,10 +40,16 @@ def split_command(command):
     command_params = tokens[1].strip() if len(tokens) == 2 else ''
     return command_word, command_params
 
+def options():
+    print('>chuck')
+    print('>chuck <category>')
+    print('>cat')
+
 
 def start_command_ui():
     command_dict = {'chuck': get_random, 'cat': cat}
     done = False
+    options()
     while not done:
         command = input('command> ')
         try:
