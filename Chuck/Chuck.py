@@ -18,17 +18,20 @@ def get_random():
         return response.json()['value']
 
 @app.route("/cat", methods=["GET"])
-def cat(params):
+def cat():
     str = ''
-    if params != '':
-        raise ValueError('Syntax: cat')
-    else:
-        cat = requests.get('https://api.chucknorris.io/jokes/categories').json()
+    cat = requests.get('https://api.chucknorris.io/jokes/categories').json()
     for i in cat:
-        str += i
+        str += i + '\n\n'
     return str
 
 app.run(host='0.0.0.0', threaded=True)
+
+
+
+
+
+
 
 # def split_command(command):
 #     """
