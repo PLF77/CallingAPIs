@@ -1,3 +1,3 @@
 runtime: python
 env: flex
-entrypoint: python Chuck.py
+entrypoint: gunicorn -b :$PORT Chuck:app

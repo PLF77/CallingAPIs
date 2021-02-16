@@ -26,7 +26,7 @@ def cat():
     return str
 
 
-app.run(host='0.0.0.0', threaded=True)
+app.run(debug=True)
 
 
 
