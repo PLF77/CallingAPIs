@@ -19,11 +19,12 @@ def get_random():
 
 @app.route("/cat", methods=["GET"])
 def cat():
-    str = ''
+    str = 'Available categories: '
     cat = requests.get('https://api.chucknorris.io/jokes/categories').json()
     for i in cat:
-        str += i + '\n\n'
+        str += i + ', '
     return str
+
 
 app.run(host='0.0.0.0', threaded=True)
 
