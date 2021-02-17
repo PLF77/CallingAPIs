@@ -26,7 +26,7 @@ def cat():
         if i == len(cat)-1:
             str += cat[i]
         else:
-            str += cat[i] + ','
+            str += cat[i] + ', '
 
     return str
 
