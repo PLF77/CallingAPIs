@@ -2,12 +2,12 @@ import json
 import requests
 from flask import Flask, request
 
-
 app = Flask(__name__)
+
 
 @app.route("/random", methods=["GET"])
 def get_random():
-    category = request.args.get('cat','')
+    category = request.args.get('cat', '')
     if category == '':
         response = requests.get('https://api.chucknorris.io/jokes/random')
         return response.json()['value']
@@ -16,6 +16,7 @@ def get_random():
     else:
         response = requests.get(f'https://api.chucknorris.io/jokes/random?category={category}')
         return response.json()['value']
+
 
 @app.route("/cat", methods=["GET"])
 def cat():
@@ -26,13 +27,8 @@ def cat():
     return str
 
 
-app.run(debug=True)
-
-
-
-
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # def split_command(command):
 #     """
@@ -73,4 +69,3 @@ app.run(debug=True)
 #
 #
 # #start_command_ui()
-
