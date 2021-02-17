@@ -22,8 +22,12 @@ def get_random():
 def cat():
     str = 'Available categories: '
     cat = requests.get('https://api.chucknorris.io/jokes/categories').json()
-    for i in cat:
-        str += i + ', '
+    for i in range(0, len(cat)):
+        if i == len(cat)-1:
+            str += cat[i]
+        else:
+            str += cat[i] + ','
+
     return str
 
 
