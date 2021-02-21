@@ -1,6 +1,7 @@
+import base64
 import json
 import requests
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ def get_random():
         response = requests.get('https://api.chucknorris.io/jokes/random')
         return response.json()['value']
     elif category not in requests.get('https://api.chucknorris.io/jokes/categories').json():
-        raise ValueError('Wrong category...')
+        return code_status()
     else:
         response = requests.get(f'https://api.chucknorris.io/jokes/random?category={category}')
         return response.json()['value']
@@ -22,13 +23,23 @@ def get_random():
 def cat():
     str = 'Available categories: '
     cat = requests.get('https://api.chucknorris.io/jokes/categories').json()
+    if not requests.get('https://api.chucknorris.io/jokes/categories'):
+        return code_status()
     for i in range(0, len(cat)):
         if i == len(cat)-1:
             str += cat[i]
         else:
             str += cat[i] + ', '
-
     return str
+
+def code_status():
+    return render_template("cats.html")
+
+# def post_image(img_file):
+#     """ post image and return the response """
+#     img = open(img_file, 'rb').read()
+#     response = requests.post(URL, data=img, headers=headers)
+#     return response
 
 
 if __name__ == '__main__':
