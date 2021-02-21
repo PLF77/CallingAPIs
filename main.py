@@ -35,12 +35,6 @@ def cat():
 def code_status():
     return render_template("cats.html")
 
-# def post_image(img_file):
-#     """ post image and return the response """
-#     img = open(img_file, 'rb').read()
-#     response = requests.post(URL, data=img, headers=headers)
-#     return response
-
 
 if __name__ == '__main__':
     app.run(debug=True)
